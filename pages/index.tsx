@@ -5,6 +5,7 @@ import Banner from "@/components/Banner";
 import requests from "@/utils/requests";
 import { Movie } from "@/typings";
 import Row from "@/components/Row";
+import { Metadata } from "next";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -15,6 +16,10 @@ interface Props {
   horrorMovies: Movie[];
   romanceMovies: Movie[];
   documentaries: Movie[];
+}
+
+export const metadata: Metadata = {
+  title: "Netflix"
 }
 
 export default function Home({
