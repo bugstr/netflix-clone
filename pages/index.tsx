@@ -5,7 +5,7 @@ import Banner from "@/components/Banner";
 import requests from "@/utils/requests";
 import { Movie } from "@/typings";
 import Row from "@/components/Row";
-import { Metadata } from "next";
+import Head from "next/head";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -16,10 +16,6 @@ interface Props {
   horrorMovies: Movie[];
   romanceMovies: Movie[];
   documentaries: Movie[];
-}
-
-export const metadata: Metadata = {
-  title: "Netflix"
 }
 
 export default function Home({
@@ -33,9 +29,10 @@ export default function Home({
   trendingNow,
 }: Props) {
   return (
-    <div
-      className="relative h-screen bg-gradient-to-b lg:h-[140vh]"
-    >
+    <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
+      <Head>
+        <title>Home - Netflix</title>
+      </Head>
       <Header />
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
