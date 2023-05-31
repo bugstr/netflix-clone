@@ -69,7 +69,7 @@ function Login() {
             />
             {errors.email && (
               <p className="p-1 text-[13px] font-light  text-orange-500">
-                Please enter a valid email.
+                {`Please enter a valid email.`}
               </p>
             )}
           </label>
@@ -82,7 +82,7 @@ function Login() {
             />
             {errors.password && (
               <p className="p-1 text-[13px] font-light  text-orange-500">
-                Your password must contain between 4 and 60 characters.
+                {`Your password must contain between 4 and 60 characters.`}
               </p>
             )}
           </label>

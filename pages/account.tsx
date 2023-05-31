@@ -66,7 +66,7 @@ function Account({ products }: Props) {
             }
           </div>
           <p className="cursor-pointer text-blue-500 hover:underline md:text-right">
-            Change plan
+            {`Change plan`}
           </p>
         </div>
 
@@ -79,7 +79,7 @@ function Account({ products }: Props) {
             className="col-span-3 cursor-pointer text-blue-500 hover:underline"
             onClick={logout}
           >
-            Sign out of all devices
+            {`Sign out of all devices`}
           </p>
         </div>
       </main>
