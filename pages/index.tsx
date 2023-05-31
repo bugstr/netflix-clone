@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import requests from "@/utils/requests";
@@ -8,12 +6,13 @@ import Row from "@/components/Row";
 import Head from "next/head";
 import useAuth from "@/hooks/useAuth";
 import { useRecoilValue } from "recoil";
-import { modalState } from "@/atoms/modalAtom";
+import { modalState, movieState } from "@/atoms/modalAtom";
 import Modal from "@/components/Modal";
 import Plans from "@/components/Plans";
 import { Product, getProducts } from "@stripe/firestore-stripe-payments";
 import payments from "@/lib/stripe";
 import useSubscription from "@/hooks/useSubscription";
+import useList from "@/hooks/useList";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -36,15 +35,17 @@ export default function Home({
   romanceMovies,
   topRated,
   trendingNow,
-  products
+  products,
 }: Props) {
   const { loading, user } = useAuth();
   const showModal = useRecoilValue(modalState);
   const subscription = useSubscription(user);
+  const movie = useRecoilValue(movieState);
+  const list = useList(user?.uid);
 
   if (loading || subscription === null) return null;
 
-  if (!subscription) return <Plans products={products}/>;
+  if (!subscription) return <Plans products={products} />;
 
   return (
     <div
@@ -64,6 +65,7 @@ export default function Home({
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
           {/* My List Component */}
+          {list.length > 0 && <Row title="My List" movies={list} />}
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />
