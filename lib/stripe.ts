@@ -22,5 +22,19 @@ const loadCheckout = async (priceId: string) => {
     .catch((error) => console.log(error.message));
 };
 
-export { loadCheckout } 
-export default payments
+const goToBillingPortal = async () => {
+  const instance = getFunctions(app, "us-central1");
+  const functionRef = httpsCallable(
+    instance,
+    "ext-firestore-stripe-payments-createPortalLink"
+  ); //redirects customer to billing portal URL
+
+  await functionRef({
+    returnUrl: `${window.location.origin}/account`, //redirect back to account after updating
+  })
+    .then(({ data }: any) => window.location.assign(data.url))
+    .catch((error) => console.log(error.message));
+};
+
+export { loadCheckout, goToBillingPortal };
+export default payments;
