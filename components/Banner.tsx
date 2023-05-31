@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { useRecoilState } from "recoil";
 
-
 interface Props {
   netflixOriginals: Movie[];
 }

@@ -24,7 +24,7 @@ function useSubscription(user: User | null) {
     });
   }, []);
 
-  return subscription
+  return subscription;
 }
 
 export default useSubscription;

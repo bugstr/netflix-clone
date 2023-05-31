@@ -15,15 +15,15 @@ interface Props {
 function Plans({ products }: Props) {
   const { logout, user } = useAuth();
   const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[2]);
-  const [isBillingLoading, setIsBillingLoading] = useState(false)
+  const [isBillingLoading, setIsBillingLoading] = useState(false);
 
   const subscribeToPlan = () => {
-    if (!user) return
+    if (!user) return;
 
     //tell stripe which plan was selected
-    loadCheckout(selectedPlan?.prices[0].id!)
-    setIsBillingLoading(true)
-  }
+    loadCheckout(selectedPlan?.prices[0].id!);
+    setIsBillingLoading(true);
+  };
 
   return (
     <div>

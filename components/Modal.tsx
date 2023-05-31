@@ -13,7 +13,14 @@ import { useEffect, useState } from "react";
 import { Movie, Element, Genre } from "@/typings";
 import ReactPlayer from "react-player/lazy";
 import { FaPlay } from "react-icons/fa";
-import { DocumentData, collection, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
+import {
+  DocumentData,
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
 import useAuth from "@/hooks/useAuth";
 import { db } from "@/firebase";
 import toast, { Toaster } from "react-hot-toast";
@@ -26,18 +33,18 @@ function Modal() {
   const [muted, setMuted] = useState(true);
   const { user } = useAuth();
   const [addedToList, setAddedToList] = useState(false);
-  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([])
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
 
   // style for toast
   const toastStyle = {
-    background: 'white',
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    padding: '15px',
-    borderRadius: '9999px',
-    maxWidth: '1000px',
-  }
+    background: "white",
+    color: "black",
+    fontWeight: "bold",
+    fontSize: "16px",
+    padding: "15px",
+    borderRadius: "9999px",
+    maxWidth: "1000px",
+  };
 
   useEffect(() => {
     if (!movie) return;
@@ -84,7 +91,7 @@ function Modal() {
   // Check if the movie is already in the user's list
   useEffect(
     () =>
-    //set to true
+      //set to true
       setAddedToList(
         movies.findIndex((result) => result.data().id === movie?.id) !== -1
       ),
