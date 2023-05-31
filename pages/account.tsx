@@ -11,7 +11,7 @@ interface Props {
   products: Product[];
 }
 
-function account({ products }: Props) {
+function Account({ products }: Props) {
   console.log(products);
   const { user, logout } = useAuth();
   const subscription = useSubscription(user);
@@ -87,7 +87,7 @@ function account({ products }: Props) {
   );
 }
 
-export default account;
+export default Account;
 
 export const getStaticProps: GetStaticProps = async () => {
   const products = await getProducts(payments, {
