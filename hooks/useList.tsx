@@ -4,7 +4,7 @@ import { DocumentData, collection, onSnapshot } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 function useList(uid: string | undefined) {
-  const [list, setList] = useState<Movie[] | DocumentData>([]);
+  const [list, setList] = useState<Movie[] | DocumentData[]>([]);
 
   useEffect(() => {
     if (!uid) return;
