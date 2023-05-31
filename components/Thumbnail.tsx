@@ -5,8 +5,7 @@ import Image from "next/image";
 import { useRecoilState } from "recoil";
 
 interface Props {
-  // While using firebase
-  movie: Movie | DocumentData;
+  movie: Movie | DocumentData
 }
 
 function Thumbnail({ movie }: Props) {

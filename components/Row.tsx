@@ -6,9 +6,8 @@ import { useRef, useState } from "react";
 import { DocumentData } from "firebase/firestore";
 
 interface Props {
-  title: string;
-  // While using firebase
-  movies: Movie[] | DocumentData[];
+  title: string
+  movies: Movie[] | DocumentData[]
 }
 
 function Row({ title, movies }: Props) {
